@@ -9,7 +9,7 @@ import java.net.URL
 try {
     node {
         stage('Checkout') {
-            git 'https://github.com/edureka-git/DevOpsClassCodes'
+            git 'https://github.com/AmoghMahesh21/Gitdemo.git'
         }
 
         stage('Build') {
@@ -23,7 +23,7 @@ try {
                 attachLog: true, 
                 body: 'The status of the build can be obtained from the build log attached', 
                 subject: 'The build update is', 
-                to: 'some email id'
+                to: 'amoghdm21@gmail.com'
             )
         }
 
@@ -54,12 +54,12 @@ try {
     }
 } finally {
     if (currentBuild.result != "ABORTED") {
-        node("master") {
+        node("Built-In Node") {
             // Send e-mail notifications for failed or unstable builds.
             step([
                 $class: 'Mailer', 
                 notifyEveryUnstableBuild: true, 
-                recipients: 'some email id', 
+                recipients: 'amoghdm21@gmail.com', 
                 sendToIndividuals: true
             ])
         }
